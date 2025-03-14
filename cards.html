@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>View Our Properties</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./Assets/css/chat.css">
+  <link rel="stylesheet" href="./Assets/css/cardstyle.css">
+  <link rel="stylesheet" href="./Assets/css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body onload="check_User(),print_filtered_card()">
+  <nav class="navbar">
+    <!-- LOGO -->
+    <div class="logo">Mid Web</div>
+
+    <!-- NAVIGATION MENU -->
+    <ul class="nav-links">
+
+      <!-- USING CHECKBOX HACK -->
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+      <!-- NAVIGATION MENUS -->
+      <div class="menu">
+
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="help.html">Want Help?</a></li>
+				<li><a href="postprop.html">Post Property</a></li>
+
+        <li id="si_label"><a href="form.html">Sign In</a></li>
+
+        <div class="user" id="user_Info">
+          <input type="checkbox" id="show_ac">
+          <label for="show_ac" class="user_letter" id="acc_label"></label>
+
+          <!-- DROPDOWN MENU -->
+          <div class="dropdown">
+            <label class="user_letter" id="acc_label1"></label>
+            <label id="user_name"></label><br><br>
+            <hr width="100%" color="white">
+            <a href onclick="logOut()" id="lo_but">&#8656 Log Out</a>
+          </div>
+
+        </div>
+      </div>
+    </ul>
+  </nav>
+  <h1 id="N_r_f" class="no_res"></h1>
+  <div id="filter_div">
+
+    <select id="city_f">
+      <option value="" disabled selected>Select City</option>
+      <option value="mumbai">Mumbai</option>
+      <option value="pune">Pune</option>
+      <option value="thane">Thane</option>
+      <option value="navi mumbai">Navi-Mumbai</option>
+      <option value="nagpur">Nagpur</option>
+    </select>
+
+    <select name="" id="propType_f">
+      <option value="" disabled selected>Property Type</option>
+      <option value="r">Residential</option>
+      <option value="c">Commercial</option>
+      <option value="l">Land/Plot</option>
+    </select>
+
+    <select name="" id="price_f">
+      <option value="" disabled selected>Price </option>
+      <option value="high">High</option>
+      <option value="medium">Moderate</option>
+      <option value="low">Low</option>
+    </select>
+
+    <select name="" id="area_f">
+      <option value="" disabled selected>Area size</option>
+      <option value="high">Big</option>
+      <option value="medium">Medium</option>
+      <option value="low">Small</option>
+    </select>
+
+    <input type="button" id="apply-but" value="Apply" onclick="card_filter()">
+    <input type="button" id="all-but" value="Show All" onclick="print_filtered_card()">
+
+  </div>
+
+  <div id="card-container">
+
+  </div>
+
+  <div class="chatbox-message-wrapper">
+		<div class="chatbox-message-header">
+			<div class="chatbox-message-profile">
+				<img src="./Assets/images/Property Owner.png" alt="" class="chatbox-message-image Image">
+				<div>
+					<h4 class="chatbox-message-name">Property Owner</h4>
+					<p class="chatbox-message-status">online</p>
+				</div>
+			</div>
+			<div class="chatbox-message-dropdown" onclick="hidecb()">
+				<i class='bx bx-x  cancel_but' style="color:#fff"></i>
+			</div>
+		</div>
+		<div class="chatbox-message-content">
+			<h4 class="chatbox-message-no-message">You don't have message yet!</h4>
+		</div>
+		<div class="chatbox-message-bottom">
+			<form action="#" class="chatbox-message-form">
+				<textarea rows="1" placeholder="Type message..." class="chatbox-message-input" required></textarea>
+				<button type="submit" class="chatbox-message-submit"><i class='bx bx-send'></i></button>
+			</form>
+		</div>
+	</div>
+
+  <div id="footer-parentcrd">
+    <div id="footer1">
+      <br>
+      <p id="footercp">Check Properties In Cities..</p><br>
+      <div class="tab">
+        <button id="b1" class="tablinks" onclick="openCity(event, 'Mumbai')">Mumbai</button>
+        <button id="b2" class="tablinks" onclick="openCity(event, 'Thane')">Thane</button>
+        <button id="b3" class="tablinks" onclick="openCity(event, 'Navi Mumbai')">Navi-Mumbai</button>
+        <button id="b4" class="tablinks" onclick="openCity(event, 'Pune')">Pune</button>
+        <button id="b5" class="tablinks" onclick="openCity(event, 'Nagpur')">Nagpur</button>
+      </div>
+
+      <div id="Mumbai" class="tabcontent">
+        <p>Information about properties in Mumbai</p>
+      </div>
+
+      <div id="Thane" class="tabcontent">
+        <p>Information about properties in Thane</p>
+      </div>
+
+      <div id="Navi Mumbai" class="tabcontent">
+        <p>Information about properties in Navi-Mumbai</p>
+      </div>
+
+      <div id="Pune" class="tabcontent">
+        <p>Information about properties in Pune</p>
+      </div>
+
+      <div id="Nagpur" class="tabcontent">
+        <p>Information about properties in Nagpur</p>
+      </div>
+
+    </div>
+    <div id="footer2">
+      <div>
+        <div id="listdiv">
+          <ul id="footerlist">
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="t&c.html">Terms & Conditions</a></li>
+            <li><a href="PrivacyPolicy.html">Privacy Policy</a></li>
+            <li><a href="help.html">Help</a></li>
+          </ul>
+        </div>
+
+        <div id="folldiv">
+          <ul id="folllist">
+            <li><a href="#"><img class="footericons" src="Assets/images/fbicon.png"></a></li>
+            <li><a href="#"><img class="footericons" src="Assets/images/instaicon.png"></a></li>
+            <li><a href="#"><img class="footericons" src="Assets/images/twiticon.png"></a></li>
+            <li><a href="#"><img class="footericons" src="Assets/images/yticon.png"></a></li>
+          </ul>
+        </div>
+      </div>
+      <p align="center" id="cpr"><span>&#169;</span>copyright 2010-30 MidWeb Tech Pvt.Ltd.</p>
+    </div>
+  </div>
+
+  <script src="./Assets/js/cards.js"></script>
+  <script src="./Assets/js/footer.js"></script>
+  <script src="./Assets/js/databBase.js"></script>
+  <script src="./Assets/js/chkUser.js"></script>
+  <script src="./Assets/js/chatbox.js"></script>
+  <script src="./Assets/js/desc.js"></script>
+</body>
+
+</html>

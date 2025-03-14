@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./Assets/css/common.css">
+	<link rel="stylesheet" href="./Assets/css/chat.css">
+	<link rel="stylesheet" href="./Assets/css/desc.css">
+	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+	<title>Description</title>
+	<style>
+		body {
+			overflow-x: hidden;
+		}
+	</style>
+</head>
+
+<body onload="check_User(),create_desc()">
+	<nav class="navbar">
+		<!-- LOGO -->
+		<div class="logo">Mid Web</div>
+
+		<!-- NAVIGATION MENU -->
+		<ul class="nav-links">
+
+			<!-- USING CHECKBOX HACK -->
+			<input type="checkbox" id="checkbox_toggle" />
+			<label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+			<!-- NAVIGATION MENUS -->
+			<div class="menu">
+
+				<li><a href="index.html">Home</a></li>
+				<li><a href="aboutus.html">About</a></li>
+				<li><a href="help.html">Want Help?</a></li>
+				<li><a href="postprop.html">Post Property</a></li>
+
+				<li id="si_label"><a href="form.html">Sign In</a></li>
+
+				<div class="user" id="user_Info">
+					<input type="checkbox" id="show_ac">
+					<label for="show_ac" class="user_letter" id="acc_label"></label>
+
+					<!-- DROPDOWN MENU -->
+					<div class="dropdown">
+						<label class="user_letter" id="acc_label1"></label>
+						<label id="user_name"></label><br><br>
+						<hr width="100%" color="white">
+						<a href onclick="logOut()" id="lo_but">&#8656 Log Out</a>
+					</div>
+
+				</div>
+			</div>
+		</ul>
+	</nav>
+
+	<div id="des-container">
+		<div id="des-div1" class="des-div1">
+			<div class="img-div">
+				<img src="./Assets/images/prop_pics/prop1_1.jpg" alt="Main Img" class="slider-main-img" id="main-img">
+			</div>
+			<div class="img-chng-div">
+				<img src="./Assets/images/prop_pics/prop1_1.jpg" alt="slider Img" class="changing-img" onclick="change_image(this)" id="chng-img1">
+				<img src="./Assets/images/prop_pics/prop1_2.jpg" alt="slider Img" class="changing-img" onclick="change_image(this)" id="chng-img2">
+				<img src="./Assets/images/prop_pics/prop1_3.jpg" alt="slider Img" class="changing-img" onclick="change_image(this)" id="chng-img3">
+				<img src="./Assets/images/prop_pics/prop1_4.jpg" alt="slider Img" class="changing-img" onclick="change_image(this)" id="chng-img4">
+			</div>
+			<div class="detail-div">
+				<h1 class="headings">House to buy/rent in Mumbai</h1>
+				<p id="price">Estimation Cost: </p>
+				<p class="desc" id="des-add">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi molestiae pariatur incidunt vel
+					cupiditate ut, praesentium delectus optio reiciendis dicta, ex quia omnis? Laboriosam ad
+					voluptatem neque earum soluta animi.
+				</p>
+				<h1 class="headings">Description</h1>
+				<p class="desc" id="des-detail">
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur fugit ipsam in ea qui
+					laborum nisi hic ad aut veritatis eum voluptatem cum ullam dolores repellat, non quo illo
+					voluptatibus?
+					Archiatecto recusandae quas quos est natus exercitationem non reprehenderit nobis, numquam, quo
+					repudiandae doloremque cum. Sequi soluta enim laboriosam tempora alias modi non corrupti nam,
+					doloribus aperiam maiores qui veniam!
+				</p><br>
+				<h1 class="headings">Amenities</h1>
+				<div class="amenities">
+					<!-- <div class="amenities-logos"> -->
+					<div class="logo">
+						<img src="./Assets/images/wifi.jpg" alt="wifiImg" class="logo-img">
+						<h2 class="logo-label">Wifi Facility</h2>
+					</div>
+					<div class="logo1">
+						<img src="./Assets/images/security.png" alt="securityImg" class="logo-img">
+						<h2 class="logo-label">Security</h2>
+					</div>
+					<div class="logo1">
+						<img src="./Assets/images/fire.png" alt="fireImg" class="logo-img">
+						<h2 class="logo-label">Fire Safety</h2>
+					</div>
+					<div class="logo1">
+						<img src="./Assets/images/parking.png" alt="parkingImg" class="logo-img">
+						<h2 class="logo-label">Parking</h2>
+					</div>
+					<div class="logo1">
+						<img src="./Assets/images/lift.jpg" alt="liftImg" class="logo-img">
+						<h2 class="logo-label">Lift Backup</h2>
+					</div>
+					<!-- <span><i class='bx bx-wifi'></i></span>
+						<span><i class='bx bx-bath'></i>2 Bath</span>
+						<span><i class='bx bxs-safety'></i>3000 Sqft</span>
+						<span><i class='bx bxs-car'></i>Parking Area</span> -->
+					<!-- </div> -->
+				</div>
+				<button class="interest" onclick="showcb()">Interested</button>
+				<button class="wish-list">wish List</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="chatbox-message-wrapper">
+		<div class="chatbox-message-header">
+			<div class="chatbox-message-profile">
+				<img src="./Assets/images/Property Owner.png" alt="" class="chatbox-message-image Image">
+				<div>
+					<h4 class="chatbox-message-name">Property Owner</h4>
+					<p class="chatbox-message-status">online</p>
+				</div>
+			</div>
+			<div class="chatbox-message-dropdown" onclick="hidecb()">
+				<i class='bx bx-x  cancel_but' style="color:#fff"></i>
+			</div>
+		</div>
+		<div class="chatbox-message-content">
+			<h4 class="chatbox-message-no-message">You don't have message yet!</h4>
+		</div>
+		<div class="chatbox-message-bottom">
+			<form action="#" class="chatbox-message-form">
+				<textarea rows="1" placeholder="Type message..." class="chatbox-message-input" required></textarea>
+				<button type="submit" class="chatbox-message-submit"><i class='bx bx-send'></i></button>
+			</form>
+		</div>
+	</div>
+
+
+	<div id="footer-parent">
+		<div id="footer1">
+			<br>
+			<p id="footercp">Check Properties In Cities..</p><br>
+			<div class="tab">
+				<button id="b1" class="tablinks" onclick="openCity(event, 'Mumbai')">Mumbai</button>
+				<button id="b2" class="tablinks" onclick="openCity(event, 'Thane')">Thane</button>
+				<button id="b3" class="tablinks" onclick="openCity(event, 'Navi Mumbai')">Navi-Mumbai</button>
+				<button id="b3" class="tablinks" onclick="openCity(event, 'Pune')">Pune</button>
+				<button id="b3" class="tablinks" onclick="openCity(event, 'Nagpur')">Nagpur</button>
+			</div>
+
+			<div id="Mumbai" class="tabcontent">
+
+			</div>
+
+			<div id="Thane" class="tabcontent">
+
+			</div>
+
+			<div id="Navi Mumbai" class="tabcontent">
+
+			</div>
+
+			<div id="Pune" class="tabcontent">
+
+			</div>
+
+			<div id="Nagpur" class="tabcontent">
+
+			</div>
+
+		</div>
+		<div id="footer2">
+			<div id="listdiv">
+				<ul id="footerlist">
+					<li><a href="aboutus.html">About Us</a></li>
+					<li><a href="t&c.html">Terms & Conditions</a></li>
+					<li><a href="PrivacyPolicy.html">Privacy Policy</a></li>
+					<li><a href="help.html">Help</a></li>
+				</ul>
+			</div>
+
+			<div id="folldiv">
+				<ul id="folllist">
+					<li><a href="#"><img class="footericons" src="Assets/images/fbicon.png"></a></li>
+					<li><a href="#"><img class="footericons" src="Assets/images/instaicon.png"></a></li>
+					<li><a href="#"><img class="footericons" src="Assets/images/twiticon.png"></a></li>
+					<li><a href="#"><img class="footericons" src="Assets/images/yticon.png"></a></li>
+				</ul>
+			</div>
+			<p align="center" id="cpr"><span>&#169;</span>copyright 2010-30 MidWeb Tech Pvt.Ltd.</p>
+		</div>
+	</div>
+	<script src="./Assets/js/desc.js"></script>
+	<script src="./Assets/js/footer.js"></script>
+	<script src="./Assets/js/chkUser.js"></script>
+	<script src="./Assets/js/chatbox.js"></script>
+</body>
+
+</html>

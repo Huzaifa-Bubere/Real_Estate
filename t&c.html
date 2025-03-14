@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - Real Estate Broker</title>
+    <link rel="stylesheet" href="./Assets/css/tcstyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Terms and Conditions</h1>
+        
+        <div id="tabs">
+            <button class="tab-link active" data-tab="buyer">Buyer</button>
+            <button class="tab-link" data-tab="seller">Seller</button>
+        </div>
+        
+        <div id="buyer-terms" class="terms-content">
+            <!-- Buyer-specific terms and conditions -->
+            <h2>Buyer Terms and Conditions</h2>
+            <p>By accessing and using the services provided on this website as a buyer, you agree to the following terms and conditions:</p>
+            <ul>
+                <li>As a buyer, you agree to provide accurate information during the property search process.</li>
+                <li>You acknowledge that the information on property listings may change, and you are responsible for verifying any information before making any decisions.</li>
+                <li>Our website is not responsible for the accuracy of third-party property listings, and you should conduct your due diligence.</li>
+                <li>Any personal information you provide will be used in accordance with our Privacy Policy.</li>
+                <li>These terms may be updated, and it's your responsibility to review them periodically.</li>
+            </ul>
+        </div>
+        
+        <div id="seller-terms" class="terms-content" style="display: none;">
+            <!-- Seller-specific terms and conditions -->
+            <h2>Seller Terms and Conditions</h2>
+            <p>By accessing and using the services provided on this website as a seller, you agree to the following terms and conditions:</p>
+            <ul>
+                <li>As a seller, you agree to provide accurate information about your property during the listing process.</li>
+                <li>You acknowledge that property listings may be subject to legal requirements, and you are responsible for compliance.</li>
+                <li>Our website is not responsible for the accuracy of buyer inquiries, and you should conduct your due diligence when dealing with potential buyers.</li>
+                <li>Any personal information you provide will be used in accordance with our Privacy Policy.</li>
+                <li>These terms may be updated, and it's your responsibility to review them periodically.</li>
+            </ul>
+        </div>
+
+        
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-link');
+        const termsContent = document.querySelectorAll('.terms-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                termsContent.forEach(content => content.style.display = 'none');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId + '-terms').style.display = 'block';
+            });
+        });
+	document.getElementById("buyer-terms").style.display="block";
+    </script>
+</body>
+</html>
